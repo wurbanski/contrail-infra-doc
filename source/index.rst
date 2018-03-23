@@ -6,6 +6,7 @@ Welcome to OpenContrail CI's team documentation.
 .. toctree::
    :caption: Contents:
    :glob:
+   :maxdepth: 2
 
    user/index
    admin/index

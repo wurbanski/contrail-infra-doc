@@ -6,9 +6,8 @@ This guide is for all OpenContrail contributors. If you work on a project hosted
 .. toctree::
    :maxdepth: 2
 
-   quickstart
+   overview
    results
-   logs
    artifacts
    nightly
    debugging
