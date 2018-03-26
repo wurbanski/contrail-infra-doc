@@ -11,6 +11,7 @@ Logs
 ----
 
 Every job leaves a log directory on our `log server <http://logs.opencontrail.org>`_. Here's a brief breakdown of its contents:
+
 * ``ara/`` - stores HTML-formatted report of the jobs. Failed playbooks/roles are marked with a red color.
 * ``job-output.txt.gz`` - full, raw output of the job. It is automatically decompressed when downloaded or displayed in the browser.
 * ``zuul-info`` - contains information about the job execution environment: Ansible variables, dmesg output, git logs etc.

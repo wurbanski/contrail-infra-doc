@@ -1,6 +1,8 @@
 CI Jobs' Results
 ================
 
+Every job started by Zuul will report one of the following results:
+
 **SUCCESS**
     Patchset went through CI and passed the tests.
 
