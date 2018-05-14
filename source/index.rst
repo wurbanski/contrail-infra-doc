@@ -11,6 +11,7 @@ Welcome to OpenContrail CI's team documentation.
    user/index
    admin/index
    architecture/index
+   rfc/index
 
 
 Indices and tables
