@@ -74,7 +74,7 @@ For CentOS it is available as a CR (`Continuous Release <https://wiki.centos.org
 For Red Hat repositories with suffix `-beta-rpms` can be used, e.g. `rhel-7-server-beta-rpms`. No additional license required.
 
 Targeting specific releases
----------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *Note: This section relates to CentOS only.*
 
