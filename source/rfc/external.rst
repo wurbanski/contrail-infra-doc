@@ -30,7 +30,7 @@ In general, we should be using one of two options:
 
    * Using the least amount of disk space.
 
-   ** Cons:**
+   **Cons:**
 
    * Huge amount of work required to maintain the list of packages (almost impossible for NPM due to chain dependencies)
 
@@ -48,7 +48,7 @@ In general, we should be using one of two options:
 
    * Costless license-wise.
 
-   ** Cons:**
+   **Cons:**
 
    * No control over the contents.
 
