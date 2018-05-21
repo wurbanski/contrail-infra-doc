@@ -57,9 +57,11 @@ Currently, Red Hat/CentOS are using a model where only the newest patch (minor) 
 There are two possible kinds of issues here:
 
 1. Unexpected upgrade
+   
    If the timelines are not tracked correctly and build system uses general repositories from the Internet, builds MAY start failing unexpectedly, leading to immediate and sudden work stops.
 
 2. Lack of support for newer versions
+ 
    If the products are not tested with upcoming releases ahead of time, we won't know if the update breaks things. 
 
 Operating systems
@@ -83,6 +85,46 @@ Red Hat provides limited time beta testing programs before releasing a RHOSP ver
 
 Mirroring required external resources
 -------------------------------------
+
+To address issues with external network access in CI and to harden the system against changes in external systems, all the required resources, such as package repositories, should be mirrored in the environment. Required repositories include:
+
+1. CentOS repositories:
+   Mirrors of directories from `CentOS vault <http://vault.centos.org>`_ or one of it's `mirrors <https://www.centos.org/download/full-mirrorlist.csv>`_. These repositories contain CentOS-supported packages for OpenStack as well.
+   Expected structure of a mirrored repository::
+
+     7.0.1406
+     7.1.1503
+     7.2.1511
+     7.3.1611
+     7.4.1708
+     7.5.1804
+     7 -> 7.5.1804
+      \
+       centosplus
+       cloud
+       cr
+       extras
+       os
+       updates
+
+2. Red Hat repositories:
+
+   Currently specified Red Hat repositories required for build:
+
+   * rhel-7-server-rpms
+   * rhel-7-server-extras-rpms
+   * rhel-7-server-optional-rpms
+   * rhel-server-rhscl-7-rpms
+
+   RHOSP repositories (Substitute release number for X according to `list <https://access.redhat.com/support/policy/updates/openstack/platform>`_, section: *Life Cycle Dates*):
+
+   * rhel-7-server-openstack-X-rpms
+   * rhel-7-server-openstack-X-devtools-rpms
+   * rhel-7-server-openstack-X-tools-rpms
+
+3. Ubuntu
+
+   Mirror packages from official Ubuntu repositories. TBD
 
 Technical means
 ---------------
