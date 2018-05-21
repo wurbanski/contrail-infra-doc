@@ -67,10 +67,14 @@ Operating systems
 
 CentOS and RHEL allow using a *beta* channel for testing with pre-release software (release candidate). 
 
+For CentOS it is available as a CR (`Continuous Release <https://wiki.centos.org/AdditionalResources/Repositories/CR>`_) repository.
+
+For Red Hat repositories with suffix `-beta-rpms` can be used, e.g. `rhel-7-server-beta-rpms`. No additional license required.
+
 OpenStack
 ^^^^^^^^^
 
-OpenStack repositories might be provided ahead of time in case of CentOS if there is a `SIG <https://wiki.centos.org/SpecialInterestGroup>`_ for that release.
+OpenStack repositories are currently being used for CentOS only. They might be provided ahead of time if there is a `SIG <https://wiki.centos.org/SpecialInterestGroup>`_ working on packages for that release. The packages are available in `cloud` repositories for CentOS and maintained by `Cloud SIG <https://wiki.centos.org/SpecialInterestGroup/Cloud>`_.
 
 Red Hat Openstack Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
