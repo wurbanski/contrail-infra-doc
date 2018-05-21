@@ -73,6 +73,13 @@ For CentOS it is available as a CR (`Continuous Release <https://wiki.centos.org
 
 For Red Hat repositories with suffix `-beta-rpms` can be used, e.g. `rhel-7-server-beta-rpms`. No additional license required.
 
+Targeting specific releases
+---------------------------
+
+*Note: This section relates to CentOS only.*
+
+To make sure that updates do not happen without operation team's knowledge, current version symlink (7) should be set for currently used point-release manually, e.g. `7 -> 7.5.1804` at the time of writing.
+
 OpenStack
 ^^^^^^^^^
 
@@ -125,8 +132,4 @@ To address issues with external network access in CI and to harden the system ag
 3. Ubuntu
 
    Mirror packages from official Ubuntu repositories. TBD
-
-Technical means
----------------
-
 
