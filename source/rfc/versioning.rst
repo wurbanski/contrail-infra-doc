@@ -19,7 +19,7 @@ Life cycle for external/upstream components has to be tracked in order to accomo
 Additionally, any packages or source code that is used in CI should be mirrored for use in air-gapped environment to reduce dependencies on external sources and proneness to network failures.
 
 Tracking release timelines
------------------------------
+--------------------------
 
 Operating systems
 ^^^^^^^^^^^^^^^^^
@@ -37,7 +37,7 @@ Operating systems
 
 3. **Ubuntu**
 
-   * `About Ubuntu 16.04 <http://releases.ubuntu.com/16.04/>`_
+   * `Ubuntu Releases <https://wiki.ubuntu.com/Releases>`_
 
 OpenStack
 ^^^^^^^^^
@@ -106,13 +106,14 @@ To address issues with external network access in CI and to harden the system ag
      7.4.1708
      7.5.1804
      7 -> 7.5.1804
-      \
-       centosplus
-       cloud
-       cr
-       extras
-       os
-       updates
+
+   Each version-specific directory should contain following entries::
+     centosplus
+     cloud
+     cr
+     extras
+     os
+     updates
 
 2. Red Hat repositories:
 
