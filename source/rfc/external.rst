@@ -9,7 +9,7 @@ This document contains design for implementation of handling external package ma
 Problem
 -------
 
-Build system uses many different package managers during the package creation or container building phases. Those stages are prone to networking issues while accessing external package repositories. Currently, there are following package managers used:
+Build system uses many different package managers during the package creation or container building phases. Those stages are prone to networking issues while accessing external package repositories. Currently, the following package managers are used:
 
 * npm (NodeJS)
 * maven (Java)
