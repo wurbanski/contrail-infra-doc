@@ -64,10 +64,12 @@ There are two possible kinds of issues here:
  
    If the products are not tested with upcoming releases ahead of time, we won't know if the update breaks things. 
 
+As a part of the solution, there should be an additional beta-based build. It should run at least weekly in the time near new release of an operating system. It should be non-voting, but logs and reports should be analyzed just as regular builds.
+
 Operating systems
 ^^^^^^^^^^^^^^^^^
 
-CentOS and RHEL allow using a *beta* channel for testing with pre-release software (release candidate). 
+CentOS and RHEL allow using a *beta* channel for testing with pre-release software (release candidate). All RH-based systems start their beta-repositories empty right after the release and keep pushing new packages before the release of next version.
 
 For CentOS it is available as a CR (`Continuous Release <https://wiki.centos.org/AdditionalResources/Repositories/CR>`_) repository.
 
@@ -98,7 +100,6 @@ To address issues with external network access in CI and to harden the system ag
 1. CentOS repositories:
    Mirrors of directories from `CentOS vault <http://vault.centos.org>`_ or one of it's `mirrors <https://www.centos.org/download/full-mirrorlist.csv>`_. These repositories contain CentOS-supported packages for OpenStack as well.
    Expected structure of a mirrored repository::
-
      7.0.1406
      7.1.1503
      7.2.1511
@@ -133,4 +134,8 @@ To address issues with external network access in CI and to harden the system ag
 3. Ubuntu
 
    Mirror packages from official Ubuntu repositories. TBD
+
+4. OpenStack
+   
+   In addition to packages (handled on a per-OS basis), `OpenStack Kolla <https://wiki.openstack.org/wiki/Kolla>`_ docker images are used. Images are available on Kolla's `dockerhub page <https://hub.docker.com/u/kolla/>`_.
 
