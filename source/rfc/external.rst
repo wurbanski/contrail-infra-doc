@@ -1,19 +1,20 @@
-External Package Managers
+External Software Managers
 =========================
 
 Purpose of this document
 ------------------------
 
-This document contains design for implementation of handling external package managers and their mirroring in Contrail 5.0+ CI.
+This document contains design for implementation of handling external software managers and their mirroring in Contrail 5.0+ CI.
 
 Problem
 -------
 
-Build system uses many different package managers during the package creation or container building phases. Those stages are prone to networking issues while accessing external package repositories. Currently, the following package managers are used:
+Build system uses many different package managers during the package creation or container building phases. Those stages are prone to networking issues while accessing external repositories. Currently, the following software managers are used:
 
 * npm (NodeJS)
 * maven (Java)
 * pip (Python)
+* docker
 
 All of those are calling to the internet instead of using internal, lab-hosted mirrors.
 
@@ -88,3 +89,7 @@ Maven
 
 * TODO
 
+Docker
+^^^^^^
+
+* TODO
