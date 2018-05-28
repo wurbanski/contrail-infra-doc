@@ -2,6 +2,7 @@ Proposals and standards
 =======================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    logs
+   ci-development-workflow
