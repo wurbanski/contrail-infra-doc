@@ -1,0 +1,183 @@
+Ansible Style Guide
+===================
+
+Purpose
+-------
+
+The purpose of this document is to define and describe the style guide to be used for Ansible
+in contrail-project-config and contrail-zuul-jobs projects. Topics include but are not limited
+to: role tasks separation between task files, task definition, interpolation syntax etc.
+
+This guide is inspired by `whitecloud's ansible style guide <https://github.com/whitecloud/ansible-styleguide>`_.
+
+Rules
+-----
+
+YAML File Format
+^^^^^^^^^^^^^^^^
+
+YAML files should begin with the YAML marker `---` marking the start of the document and end with a newline.
+
+.. code-block:: yaml
+
+  ---
+
+  - name: restart apache
+    service:
+      name: 'apache2'
+      state: 'restarted'
+
+Hosts Declaration
+^^^^^^^^^^^^^^^^^
+
+Use the following order for hosts declaration:
+  * `hosts:` declaration
+  * host options in alphabetical order
+  * pre_tasks
+  * roles
+  * tasks
+
+.. code-block:: yaml
+
+  - hosts: webservers
+    remote_user: 'centos'
+    vars:
+      tomcat_state: 'started'
+    pre_tasks:
+      - name: set the timezone to America/Boise
+        lineinfile:
+          dest: '/etc/environment'
+          line: 'TZ=America/Boise'
+          state: 'present'
+        become: true
+    roles:
+      - { role: 'tomcat', tags: 'tomcat' }
+    tasks:
+      - name: start the tomcat service
+        service:
+          name: 'tomcat'
+        state: '{{ tomcat_state }}'
+
+Task Declaration
+^^^^^^^^^^^^^^^^
+
+* Lowercase the first letter of a task name.
+* Use the map syntax. Use only one space after the colon.
+* Use the following order for task declaration:
+  * task name
+  * task map declaration
+  * loop operators
+  * task options in alphabetical order
+
+.. code-block:: yaml
+
+  - name: template sensu configuration
+    template:
+      src: '{{ item }}.conf.j2'
+      dest: '/etc/sensu/{{ item }}.conf'
+      mode: '0644'
+      owner: 'sensu'
+      group: 'sensu'
+    with_items:
+      - sensu-api
+      - sensu-client
+      - sensu-server
+    become: true
+
+Role File Structure
+^^^^^^^^^^^^^^^^^^^
+
+The main.yaml file in `tasks` directory should contain only `include_tasks:` statements, in alphabetical
+order of the included files. The actual logic should be placed in other, well-named YAML files in the
+`tasks` directory of a role. Use the `.yaml` file extension names rather than `.yml`.
+
+.. code-block:: bash
+
+  roles/
+    fetch-logs-sanity-tests/
+      tasks/
+        container-logs.yaml
+        contrail-logs.yaml
+        main.yaml
+        kolla-logs.yaml
+        sanity-logs.yaml
+
+For the above structure, the main.yaml file would hold:
+
+.. code-block:: yaml
+
+  - include_tasks: container-logs.yaml
+  - include_tasks: contrail-logs.yaml
+  - include_tasks: kolla-logs.yaml
+  - include_tasks: sanity-logs.yaml
+
+Quotes
+^^^^^^
+
+Always quote strings (defaulting to single quotes). Do NOT quote:
+
+  * `hosts:` targets (e.g. `hosts: databases` rather than `hosts: 'databases'`)
+  * `include_tasks:` and `include_roles:` target file names
+  * task names
+  * registered variables
+  * number values
+  * boolean values
+  * conditional logic (`when:` task options)
+
+Use double quotes only where single quotes can not be used to write syntactically or semantically correct code:
+
+.. code-block:: yaml
+
+  - hosts: all
+    vars:
+      my_string: "this is a \nmultiline string" # 'this is a\nmultiline' would not produce the same result
+      my_num: 42
+      my_boolean: false
+    tasks:
+      - name: this task doesn't make much sense
+        copy:
+          dest: '/tmp/file'
+          content: '{{ my_string }}:{{ my_num}}'
+        register: registered_var
+        when: not my_boolean
+
+Multiline strings
+^^^^^^^^^^^^^^^^^
+
+Use the '|' character to mark the beginning of a multiline string.
+
+.. code-block:: yaml
+
+  multiline_string: |
+    this is a
+    multiline string
+
+Booleans
+^^^^^^^^
+
+Use true/false for boolean values.
+
+.. code-block:: yaml
+
+  - hosts: all
+    become: true
+    roles:
+      - add-ssh-keys
+
+Variables
+^^^^^^^^^
+
+Use `snake_case` for variable names:
+
+.. code-block:: yaml
+
+  my_string: 'hello thar'
+  my_number: '42'
+  my_boolean: true
+
+Module Usage
+^^^^^^^^^^^^
+
+Use the following modules by default:
+  * `package` instead of `yum` and `apt`
+  * `command` instead of `shell` when actual shell functionality is not needed
