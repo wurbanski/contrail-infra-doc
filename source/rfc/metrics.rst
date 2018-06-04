@@ -54,10 +54,10 @@ Technical requirements
 
       buildset.<pipeline>.<project-name>.<job-name>.<gerrit-change-id>.<gerrit-patchset>.<resource>
 
-    for the check, gate and experimental pipelines. For the other pipelines a timestamp of the start of the jobs should be used
-    instead of gerrit-change-id and gerrit-patchset:
+    for the check, gate and experimental pipelines. For the other pipelines the git branch and a timestamp of the start
+    of the jobs should be used instead of gerrit-change-id and gerrit-patchset:
 
-      buildset.<pipeline>.<project-name>.<job-name>.<job-start-timestamp>.<resource>
+      buildset.<pipeline>.<project-name>.<job-name>.<branch>.<job-start-timestamp>.<resource>
 
     e.g.
 
@@ -71,9 +71,9 @@ Technical requirements
 
       buildset.periodic-nightly.contrail-analytics.contrail-vnc-build-containers-rhel7-ocata.1527522025.imagesize
 
-#.  The metric gathering system (or the corresponding frontend) should allow to store the data (or transform and show)
-    in a way that allows aligning the start timestamps of jobs to allow further processing of the data e.g. computing
-    average values.
+#.  The metric gathering system (or the corresponding frontend) should allow to aggregate and filter stored data
+    per job/project/branch (e.g. average UT job disk usage for contrail-controller on branch 5.0). There should
+    also be a frontend allowing to graph the stored metrics.
 
     Consider two test runs A and B (for a specific project) for which we gathered physical resources
     usage spread across 1000 points in time. A requirement would be to compute the average resource usage for the aligned
