@@ -20,34 +20,42 @@ This section contains proposals of metrics to gather during and from buildsets.
 
 #. General
 
-   * run duration
+  * run duration
 
 #. Physical resources
 
-   * CPU usage by time
-   * memory usage by time
-   * storage usage by time
-   * disk IO by time
-   * network IO by time
+  * CPU usage by time
+  * memory usage by time
+  * storage usage by time
+  * disk IO by time
+  * network IO by time
+  * CPU hours
+  * peak memory usage
+  * peak disk usage
 
-   *Note: in case of storage usage, might need to consider only specific mount points*
+  *Note: in case of storage usage, might need to consider only specific mount points*
 
 #. Test jobs specific metrics
 
-   * number of tests run for a specific buildset - might be useful in enforcing that more tests are added
-   * duration of each test case execution
-   * run log size
+  * number of tests run for a specific buildset - might be useful in enforcing that more tests are added
+  * duration of each test case execution
+  * run log size
 
 #. Packaging jobs specific metrics
 
-   * size of created packages
+  * size of created packages
 
 #. Container builder jobs specific metrics
 
-   * size of created images
+  * size of created images
 
 Technical requirements
 ----------------------
+
+#.  The metric gathering system should allow for storing two types of metrics:
+
+  * time-series data (e.g. CPU usage at given point in time)
+  * discrete values (e.g. built packages size)
 
 #.  Each buildsets metrics should be gathered separately, with consideration of review and patchset ID's. This
     would require for the metrics naming convention to be of the form:
