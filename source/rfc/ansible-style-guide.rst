@@ -88,10 +88,9 @@ Task Declaration
 Role File Structure
 ^^^^^^^^^^^^^^^^^^^
 
-The number and size of task definitions in a task file should allow for the whole
-task file to be visible on a single screen. Should a single task file get too big,
-it should be separated into multiple task files, with only `include_tasks:` statements
-present in the main.yaml file of the role.
+The number and size of task definitions in a task file should be kept in reasonable
+bounds. Should a single task file get too big, it should be separated into multiple
+task files, with only `include_tasks:` statements present in the main.yaml file of the role.
 
 .. code-block:: bash
 
