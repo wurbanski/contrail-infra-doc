@@ -27,6 +27,7 @@ YAML files should begin with the YAML marker `---` marking the start of the docu
       name: 'apache2'
       state: 'restarted'
 
+
 Hosts Declaration
 ^^^^^^^^^^^^^^^^^
 
@@ -182,3 +183,12 @@ Module Usage
 Use the following modules by default:
   * `package` instead of `yum` and `apt`
   * `command` instead of `shell` when actual shell functionality is not needed
+
+
+Linter
+------
+
+`ansible-lint <https://github.com/willthames/ansible-lint>`_ allows for linting Ansible playbooks
+and roles. It has a set of predefined rules and in this context is extensible. Adding custom rules
+is supported by runtime flags. Defining a rule is a matter of inheriting from the `AnsibleLintRule`
+class and providing an implementation of a specific method.
