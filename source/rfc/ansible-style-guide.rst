@@ -16,7 +16,7 @@ Rules
 YAML File Format
 ^^^^^^^^^^^^^^^^
 
-YAML files should begin with the YAML marker `---` marking the start of the document and end with a newline.
+YAML files should begin with the YAML marker `---` marking the start of the document and end with a blank line.
 
 .. code-block:: yaml
 
@@ -87,9 +87,10 @@ Task Declaration
 Role File Structure
 ^^^^^^^^^^^^^^^^^^^
 
-The main.yaml file in `tasks` directory should contain only `include_tasks:` statements, in alphabetical
-order of the included files. The actual logic should be placed in other, well-named YAML files in the
-`tasks` directory of a role. Use the `.yaml` file extension names rather than `.yml`.
+The number and size of task definitions in a task file should allow for the whole
+task file to be visible on a single screen. Should a single task file get too big,
+it should be separated into multiple task files, with only `include_tasks:` statements
+present in the main.yaml file of the role.
 
 .. code-block:: bash
 
