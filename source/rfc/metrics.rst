@@ -60,24 +60,26 @@ Technical requirements
 #.  Each buildsets metrics should be gathered separately, with consideration of review and patchset ID's. This
     would require for the metrics naming convention to be of the form:
 
-      buildset.<pipeline>.<project-name>.<job-name>.<gerrit-change-id>.<gerrit-patchset>.<resource>
+      buildset.<pipeline>.<project-name>.<branch>.<job-name>.<gerrit-change-id>.<gerrit-patchset>.<resource>
 
     for the check, gate and experimental pipelines. For the other pipelines the git branch and a timestamp of the start
     of the jobs should be used instead of gerrit-change-id and gerrit-patchset:
 
-      buildset.<pipeline>.<project-name>.<job-name>.<branch>.<job-start-timestamp>.<resource>
+      buildset.<pipeline>.<project-name>.<branch>.<job-name>.<build_number>.<resource>
 
     e.g.
 
-      buildset.check.contrail-project-config.zuul-jobs-linters.42705.1.cpu
-      buildset.check.contrail-project-config.zuul-jobs-linters.43333.3.mem
+      buildset.check.contrail-project-config.add-something-new.zuul-jobs-linters.42705.1.cpu
+      buildset.check.contrail-project-config.fix-typo.zuul-jobs-linters.43333.3.mem
 
-      buildset.periodic-sanity.contrail-analytics.contrail-systest-full-centos74-kolla-ocata.41414.2.notests
-      buildset.periodic-sanity.contrail-analytics.contrail-systest-full-centos74-kolla-ocata.43343.4.logsize
+      buildset.periodic-sanity.contrail-analytics.master.contrail-systest-full-centos74-kolla-ocata.41414.2.notests
+      buildset.periodic-sanity.contrail-analytics.R5_0.contrail-systest-full-centos74-kolla-ocata.43343.4.logsize
 
-      buildset.periodic-nightly.contrail-analytics.contrail-vnc-build-package-ubuntu-xenial.1527517025.packagesize
+      buildset.periodic-nightly.contrail-analytics.R5_0_1.contrail-vnc-build-package-ubuntu-xenial.112.packagesize
 
-      buildset.periodic-nightly.contrail-analytics.contrail-vnc-build-containers-rhel7-ocata.1527522025.imagesize
+      buildset.periodic-nightly.contrail-analytics.master.contrail-vnc-build-containers-rhel7-ocata.113.imagesize
+
+    *Note: in case of release branches the dots would need to be replaced with underscores.*
 
 #.  The metric gathering system (or the corresponding frontend) should allow to aggregate and filter stored data
     per job/project/branch (e.g. average UT job disk usage for contrail-controller on branch 5.0). There should
@@ -88,4 +90,6 @@ Technical requirements
     data points, that is average CPU/mem etc usage in the 1, 2, 3 and so on second of the job run (assuming metrics
     are gathered each second).
 
-*Note: metric gathering systems typically save metric values for either provided unix timestamps or for the moment the value was received.*
+    *Note: metric gathering systems typically save metric values for either provided unix timestamps or for the moment the value was received.*
+
+#.  Metrics should be stored for 14 days in case of *check* and *gate* and 60 days for other pipelines.
