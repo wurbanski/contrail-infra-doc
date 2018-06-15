@@ -142,17 +142,6 @@ Use double quotes only where single quotes can not be used to write syntacticall
         register: registered_var
         when: not my_boolean
 
-Multiline strings
-^^^^^^^^^^^^^^^^^
-
-Use the '|' character to mark the beginning of a multiline string.
-
-.. code-block:: yaml
-
-  multiline_string: |
-    this is a
-    multiline string
-
 Booleans
 ^^^^^^^^
 
