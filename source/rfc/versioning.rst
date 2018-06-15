@@ -80,12 +80,14 @@ Targeting specific releases
 
 *Note: This section relates to CentOS only.*
 
-To make sure that updates do not happen without operation team's knowledge, current version symlink (7) should be set for currently used point-release manually, e.g. `7 -> 7.5.1804` at the time of writing.
+To make sure that updates do not happen without operation team's knowledge, current version (7) should be set for currently used point-release manually, e.g. `7 -> 7.5.1804` at the time of writing.
 
 OpenStack
 ^^^^^^^^^
 
 OpenStack repositories are currently being used for CentOS only. They might be provided ahead of time if there is a `SIG <https://wiki.centos.org/SpecialInterestGroup>`_ working on packages for that release. The packages are available in `cloud` repositories for CentOS and maintained by `Cloud SIG <https://wiki.centos.org/SpecialInterestGroup/Cloud>`_.
+
+Additionally, there is and `RDO Project <https://www.rdoproject.org/>`_, which aims to provide working builds of OpenStack releases for CentOS.
 
 Red Hat Openstack Platform
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -131,11 +133,19 @@ To address issues with external network access in CI and to harden the system ag
    * rhel-7-server-openstack-X-devtools-rpms
    * rhel-7-server-openstack-X-tools-rpms
 
+   Beta RHOSP repositories:
+
+   * rhel-7-server-openstack-beta-rpms
+   * rhel-7-server-openstack-devtools-beta-rpms
+   * rhel-7-server-openstack-tools-beta-rpms
+
 3. Ubuntu
 
    Mirror packages from official Ubuntu repositories. TBD
 
 4. OpenStack
-   
+  
+   In addition to CentOS CloudSIG repositories, OpenStack master builds can be picked up from `RDO trunk <https://trunk.rdoproject.org/centos7-master/current/>`_. This should also be mirrored once openstack master-builds start.
+
    In addition to packages (handled on a per-OS basis), `OpenStack Kolla <https://wiki.openstack.org/wiki/Kolla>`_ docker images are used. Images are available on Kolla's `dockerhub page <https://hub.docker.com/u/kolla/>`_.
 
