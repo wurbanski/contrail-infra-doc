@@ -86,10 +86,11 @@ Technical requirements
     also be a frontend allowing to graph the stored metrics.
 
     Consider two test runs A and B (for a specific project) for which we gathered physical resources
-    usage spread across 1000 points in time. A requirement would be to compute the average resource usage for the aligned
-    data points, that is average CPU/mem etc usage in the 1, 2, 3 and so on second of the job run (assuming metrics
-    are gathered each second).
+    usage spread across 1000 points in time. A requirement would be to compute the average resource usage for the
+    aligned data points, that is average CPU/mem etc usage in the 1, 2, 3 and so on second of the job run (assuming
+    metrics are gathered each second).
 
-    *Note: metric gathering systems typically save metric values for either provided unix timestamps or for the moment the value was received.*
+    *Note: metric gathering systems typically save metric values for either provided unix timestamps or for the moment
+    the value was received.*
 
 #.  Metrics should be stored for 14 days in case of *check* and *gate* and 60 days for other pipelines.
