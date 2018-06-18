@@ -7,3 +7,4 @@ Proposals and standards
    logs
    versioning
    metrics
+   ansible-style-guide
