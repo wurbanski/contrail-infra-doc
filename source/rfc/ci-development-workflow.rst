@@ -26,17 +26,23 @@ vote should come with a comment explaining the reason behind it.
 Approval workflow for CI projects hosted on GitHub
 --------------------------------------------------
 
+Pull requests for repositories developed on GitHub should follow this general procedure:
+
+#. Pull Requests should be created from a single-purpose branch created in a personal fork of the repo (not applicable in case of private repos)
+#. Pull Requests should be merged by their author after acquiring at least one "Approve" review
+#. Pull Requests should be merged using the "create merge commit" strategy
+#. the author should request review from the "codilime-contractors-devops" team
+
+Below are specific rules for certain repositories:
+
 Juniper/contrail-infra
 **********************
 
-This repo contains Puppet code used to configure the Contrail CI services.
+This repo contains Puppet code used to configure the Contrail CI services. Development follows a
+special two-stage path that first . The procedure is described below:
 
-#. create your own fork of the repo
 #. make sure that you perform a syntax check of your changes: https://github.com/Juniper/contrail-infra/blob/development/doc/source/contributing.rst#syntax-checks-and-linting
-#. commit your local changes and push the commits to some branch of your fork (e.g. myfix1)
-#. create a pull request from <your fork>:myfix1 to Juniper/contrail-infra:development
-#. get approval from a user with permissions
-#. merge your PR using the "Create merge commit" strategy
+#. create and merge a PR to the ``development`` branch first (use the general procedure)
 #. to push the changes further to the production branch, create an intermediate commit on the "staging" branch (origin is the J/c-i repo):
 
    #. ``git checkout production``
@@ -44,26 +50,28 @@ This repo contains Puppet code used to configure the Contrail CI services.
    #. ``git merge origin/development``
    #. ``git push origin staging``
 #. create a pull request from Juniper/contrail-infra:staging to Juniper/contrail-infra:production
-#. get approval from a user with permissions
-#. merge your PR using the "Create merge commit" strategy
+#. merge it using the general procedure
 #. after your PR gets merged, push the changes to the production Puppet server (ci-puppetmaster.opencontrail.org)
 
 Juniper/zuul-jobs
 **********************
 
 This is a patched fork of the upstream Zuul job/role library. Custom patches to this repo
-are submitted without established approval process.
+should be submitted as regular Pull Requests, following the general procedure. Special
+situations like updating code by rebasing onto upstream branches should be carried out
+after consulting with the rest of the infra team.
 
 Juniper/zuul
 **********************
 
-This is a patched fork of the Zuul source repository, changes can be submitted by
-all the authorized GitHub users. Zuul updates are performed by rebasing the patches onto
-upstream branch tips. Custom patches to Zuul are submitted without established approval
-process.
+This is a patched fork of the Zuul source repository. Zuul updates are performed by rebasing the patches onto
+upstream branch tips. Custom patches to this repo should be submitted as regular
+Pull Requests, following the general procedure. Special situations like updating
+code by rebasing onto upstream branches should be handled after consulting with
+the rest of the infra team.
 
-Emergency procedures
---------------------
+Emergency procedures - Gerrit
+-----------------------------
 
 In emergency situations, when the change is required to fix an error affecting
 majority of the CI jobs or daily build jobs, the author can merge the change on
@@ -74,7 +82,6 @@ change that is supposed to fix the system, the CI can be bypassed by placing
 a `Verified+2` vote and manually submitting the change for merging. This can be done:
 - via the Gerrit webui using an account with `Project-bootstrappers` membership
 - via CLI, by logging in to the zuulv3.opencontrail.org and issuing Gerrit CLI commands.
-
 
 Testing changes in contrail-zuul-jobs
 -------------------------------------
