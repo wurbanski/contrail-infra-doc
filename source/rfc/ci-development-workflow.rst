@@ -3,6 +3,14 @@ CI development workflow
 
 This document describes the rules that control the development of source code responsible for the testing and build of OpenContrail.
 
+Commit message style guide
+--------------------------
+
+|  The commit summary/title line should bo no longer than 50 characters.
+|  There should be a blank line after the summary.
+|  The description text after the blank line should be wrapped at 72 characters at most.
+|  The description should explain the rationale behind the change introduced in this commit (i.e. why do we need this change).
+
 Approval workflow for CI projects hosted on Gerrit
 --------------------------------------------------
 
