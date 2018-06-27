@@ -57,6 +57,8 @@ In general, we should be using one of two options:
 
    * Each packages has to be downloaded *at least once* - in case of bigger network issues it might be a problem.
 
+   * Some package managers have difficult to reproduce protocols for acquiring packages.
+
 Specifications of repositories used in CI
 -----------------------------------------
 
@@ -84,12 +86,32 @@ Notes:
 
 * Registry and files hosting on the same host
 
+* Easy to cache using e.g. nginx as a cache server.
+
+* There are custom built solutions for npm caching, e.g. local-npm or commercial products like Sonatype Nexus or JFrog Artifactory.
+
 Maven
 ^^^^^
 
-* TODO
+Location:
+
+* https://search.maven.org
+
+Notes:
+
+* Usual way of caching maven is by using tools designed for that, e.g. SonaType Nexus or JFrog Artifactory.
+
+* It might be posibble to use pass-through cache for maven.
 
 Docker
 ^^^^^^
 
-* TODO
+Location: https://hub.docker.com/
+
+Notes:
+
+* Docker registry (https://hub.docker.com/_/registry) can work in pull-through cache mode, docker daemons have to be configured for the internal repository to be used. 
+
+  This registry can proxy traffic to multiple other registries, even requiring login to use. It also *cleans up old images automatically*, when new ones are pulled for the same tags.
+
+  Documentation can be found `here <https://docs.docker.com/registry/recipes/mirror/>`_.

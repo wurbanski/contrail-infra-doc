@@ -8,3 +8,4 @@ Proposals and standards
    versioning
    metrics
    ansible-style-guide
+   external
