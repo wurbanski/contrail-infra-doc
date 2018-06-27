@@ -6,7 +6,7 @@ This document describes the rules that control the development of source code re
 Commit message style guide
 --------------------------
 
-|  The commit summary/title line should bo no longer than 50 characters.
+|  The commit summary/title line should bo no longer than 50 characters and contain precise information about which repo elements has been changed, to the extent possible.
 |  There should be a blank line after the summary.
 |  The description text after the blank line should be wrapped at 72 characters at most.
 |  The description should explain the rationale behind the change introduced in this commit (i.e. why do we need this change).
