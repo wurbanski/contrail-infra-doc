@@ -22,10 +22,11 @@ Each CI project has a corresponding user group that contains core reviewers:
 Each change to those projects should go through a two-step review process, both 
 steps have to be performed by reviewers other than the author of the change:
 
+#. The core reviewers group of the project should be added to the review by the author of the change.
 #. First core reviewer that accepts the change should place a ``Code-Review +2``
-   vote
+   vote.
 #. Second core reviewer that accepts the change should place an ``Approved +1``
-   vote that will result in a merge (if the CI tests pass)
+   vote that will result in a merge (if the CI tests pass).
 
 The author of the change (regardless if he's in the core reviewers group), can place
 a ``Code-Review -2`` vote under his review to prevent others from reviewing it. This
