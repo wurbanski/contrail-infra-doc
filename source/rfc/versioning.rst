@@ -102,6 +102,7 @@ To address issues with external network access in CI and to harden the system ag
 1. CentOS repositories:
    Mirrors of directories from `CentOS vault <http://vault.centos.org>`_ or one of it's `mirrors <https://www.centos.org/download/full-mirrorlist.csv>`_. These repositories contain CentOS-supported packages for OpenStack as well.
    Expected structure of a mirrored repository::
+
      7.0.1406
      7.1.1503
      7.2.1511
