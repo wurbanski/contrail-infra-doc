@@ -1,5 +1,5 @@
 External Software Managers
-=========================
+==========================
 
 Purpose of this document
 ------------------------
@@ -17,6 +17,9 @@ Build system uses many different package managers during the package creation or
 * docker
 
 All of those are calling to the internet instead of using internal, lab-hosted mirrors.
+
+1. Describe the means of mirroring external sources.
+2. Describe the means of using them in CI.
 
 Solution
 --------
@@ -71,6 +74,10 @@ Location:
 
 * https://files.pythonhosted.org (package files)
 
+Configuration required:
+
+* Add option ``index-url`` to a config file (global config located at ``/etc/pip.conf``). Configure as ``trusted-host`` as well.
+
 Notes:
 
 * requires usage of HTTPS by default
@@ -81,6 +88,10 @@ Node Package Manager (npm)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Location: https://registry.npmjs.org
+
+Configuration required:
+
+* Add option ``registry`` to a config (global: ``/etc/npmrc``)
 
 Notes:
 
@@ -97,6 +108,10 @@ Location:
 
 * https://search.maven.org
 
+Configuration required:
+
+* Configure mirror in settings.xml file as per `documentation <https://maven.apache.org/guides/mini/guide-multiple-repositories.html>`_.
+
 Notes:
 
 * Usual way of caching maven is by using tools designed for that, e.g. SonaType Nexus or JFrog Artifactory.
@@ -108,10 +123,14 @@ Docker
 
 Location: https://hub.docker.com/
 
+Configuration required:
+
+* Add ``"registry-mirrors": ['http://<docker-mirror-host>:<port>']`` to ``/etc/docker/daemon.json`` configuration object.
+
 Notes:
 
 * Docker registry (https://hub.docker.com/_/registry) can work in pull-through cache mode, docker daemons have to be configured for the internal repository to be used. 
 
-  This registry can proxy traffic to multiple other registries, even requiring login to use. It also *cleans up old images automatically*, when new ones are pulled for the same tags.
+  This registry can proxy traffic to multiple other registries, even requiring login to use. It also *untags up old images automatically* when new ones are pulled for the same tags. Garbage collection has to be run separately.
 
   Documentation can be found `here <https://docs.docker.com/registry/recipes/mirror/>`_.
