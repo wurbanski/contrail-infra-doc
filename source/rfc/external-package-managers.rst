@@ -74,7 +74,7 @@ Location:
 
 * https://files.pythonhosted.org (package files)
 
-Configuration required:
+Client configuration:
 
 * Add option ``index-url`` to a config file (global config located at ``/etc/pip.conf``). Configure as ``trusted-host`` as well.
 
@@ -87,9 +87,11 @@ Notes:
 Node Package Manager (npm)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Location: https://registry.npmjs.org
+Location: 
 
-Configuration required:
+* https://registry.npmjs.org
+
+Client configuration:
 
 * Add option ``registry`` to a config (global: ``/etc/npmrc``)
 
@@ -108,7 +110,7 @@ Location:
 
 * https://search.maven.org
 
-Configuration required:
+Client configuration:
 
 * Configure mirror in settings.xml file as per `documentation <https://maven.apache.org/guides/mini/guide-multiple-repositories.html>`_.
 
@@ -118,12 +120,16 @@ Notes:
 
 * It might be posibble to use pass-through cache for maven.
 
-Docker
-^^^^^^
+* The solution should also allow hosting some packages not available on official maven repository.
 
-Location: https://hub.docker.com/
+Docker Images
+^^^^^^^^^^^^^
 
-Configuration required:
+Location: 
+
+* https://hub.docker.com/
+
+Client configuration:
 
 * Add ``"registry-mirrors": ['http://<docker-mirror-host>:<port>']`` to ``/etc/docker/daemon.json`` configuration object.
 
