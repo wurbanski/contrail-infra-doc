@@ -13,8 +13,8 @@ This guide is inspired by `whitecloud's ansible style guide <https://github.com/
 Rules
 -----
 
-YAML File Format
-^^^^^^^^^^^^^^^^
+ANSIBLE-J0001 - YAML File Format
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 YAML files should begin with the YAML marker `---` marking the start of the document and end with a blank line.
 
@@ -27,9 +27,13 @@ YAML files should begin with the YAML marker `---` marking the start of the docu
       name: 'apache2'
       state: 'restarted'
 
+ANSIBLE-J0002 - YAML File Extension
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Hosts Declaration
-^^^^^^^^^^^^^^^^^
+Always use the '.yaml' file extension for YAML files.
+
+ANSIBLE-J0003 - Hosts Declaration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the following order for hosts declaration:
   * `hosts:` declaration
@@ -59,8 +63,8 @@ Use the following order for hosts declaration:
           name: 'tomcat'
         state: '{{ tomcat_state }}'
 
-Task Declaration
-^^^^^^^^^^^^^^^^
+ANSIBLE-J0004 - Task Declaration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Lowercase the first letter of a task name.
 * Use the map syntax. Use only one space after the colon.
@@ -85,8 +89,8 @@ Task Declaration
       - sensu-server
     become: true
 
-Role File Structure
-^^^^^^^^^^^^^^^^^^^
+ANSIBLE-J0005 - Role File Structure
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The number and size of task definitions in a task file should be kept in reasonable
 bounds. Should a single task file get too big, it should be separated into multiple
@@ -112,8 +116,8 @@ For the above structure, the main.yaml file would hold:
   - include_tasks: kolla-logs.yaml
   - include_tasks: sanity-logs.yaml
 
-Quotes
-^^^^^^
+ANSIBLE-J0006 - Quotes
+^^^^^^^^^^^^^^^^^^^^^^
 
 Always quote strings (defaulting to single quotes). Do NOT quote:
 
@@ -142,8 +146,8 @@ Use double quotes only where single quotes can not be used to write syntacticall
         register: registered_var
         when: not my_boolean
 
-Booleans
-^^^^^^^^
+ANSIBLE-J0007 - Booleans
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use true/false for boolean values.
 
@@ -154,8 +158,8 @@ Use true/false for boolean values.
     roles:
       - add-ssh-keys
 
-Variables
-^^^^^^^^^
+ANSIBLE-J0008 - Variables
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use `snake_case` for variable names:
 
@@ -165,8 +169,8 @@ Use `snake_case` for variable names:
   my_number: '42'
   my_boolean: true
 
-Module Usage
-^^^^^^^^^^^^
+ANSIBLE-J0009 - Module Usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the following modules by default:
   * `package` instead of `yum` and `apt`
