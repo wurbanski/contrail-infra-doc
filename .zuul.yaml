@@ -1,0 +1,8 @@
+- project:
+    name: Juniper/contrail-infra-doc
+    check:
+      jobs:
+        - build-infra-doc
+    gate:
+      jobs:
+        - build-infra-doc
